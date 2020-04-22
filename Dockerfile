@@ -47,7 +47,7 @@ RUN usermod -a -G sasl prosody
 
 # setup Prosody environment
 # port (note that config files port definitions make precedence over this, so if different expose manually correct port)
-ENV PROSODY_TCP_PORT=5222 5269 5000
+ENV PROSODY_TCP_PORT="5222 5269 5000"
 # config file (bind mount file at Docker run for custom config) /etc/prosody/prosody.cfg.lua
 # certificates folder (bind mount folder at Docker run for custom config) /etc/prosody/certs/
 # data folder for persistency (bind mount folder at Docker run for custom config) /var/lib/prosody/
