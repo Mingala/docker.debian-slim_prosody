@@ -1,5 +1,5 @@
 # base version targeted from Docker Hub
-ARG BASE_VERSION=10.3-slim
+ARG BASE_VERSION="10.3-slim"
 # Debian base
 FROM debian:${BASE_VERSION}
 LABEL maintainer="admin@qi2.info"
@@ -20,12 +20,12 @@ RUN apt update \
 
 # app version and debian package version targeted
 # from Prosody repository
-ARG APP_PROSODY_KEY=0x7393d7e674d9dbb5
-ARG APP_PROSODY_REPO=http://packages.prosody.im/debian buster main
-ARG APP_PROSODY_RELEASE=0.11.4-1~buster2
+ARG APP_PROSODY_KEY="0x7393d7e674d9dbb5"
+ARG APP_PROSODY_REPO="http://packages.prosody.im/debian buster main"
+ARG APP_PROSODY_RELEASE="0.11.4-1~buster2"
 # from Debian backport repository for Cyrus Sasl
-ARG APP_CYRUS_REPO=http://deb.debian.org/debian buster-backports main
-ARG APP_CYRUS_RELEASE=1.1.0-1~bpo10+1
+ARG APP_CYRUS_REPO="http://deb.debian.org/debian buster-backports main"
+ARG APP_CYRUS_RELEASE="1.1.0-1~bpo10+1"
 
 # Debian repository
 #   for Prosody repository as per : https://prosody.im/download/package_repository
