@@ -1,5 +1,5 @@
 # docker.debian-slim_prosody
-Docker image for Prosody server based on Debian Slim base.
+Docker image for Prosody server based on Debian Slim base. Source code at [Github](https://github.com/Mingala/docker.debian-slim_prosody).
 * Components installed :
   * [Prosody](https://prosody.im/) (default install from Prosody repository)
   * [Cyrus Sasl](https://www.cyrusimap.org/sasl/) for Sasl authentification, only ldap component installed, modify Dockerfile for more
