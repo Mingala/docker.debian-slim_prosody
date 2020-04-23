@@ -58,4 +58,5 @@ COPY ./usr/lib/sasl2/prosody.conf /usr/lib/sasl2/prosody.conf
 COPY ./usr/local/bin/docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 RUN chmod u+x /usr/local/bin/docker_entrypoint.sh
 EXPOSE ${PROSODY_TCP_PORT}/tcp
-ENTRYPOINT ["/usr/local/bin/docker_entrypoint.sh"]
+#ENTRYPOINT ["/usr/local/bin/docker_entrypoint.sh"]
+ENTRYPOINT ["/bin/bash"]
