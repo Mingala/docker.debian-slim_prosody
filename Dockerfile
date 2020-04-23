@@ -22,7 +22,7 @@ RUN apt update \
 # from Prosody repository
 ARG APP_PROSODY_KEY="0x7393d7e674d9dbb5"
 ARG APP_PROSODY_REPO="http://packages.prosody.im/debian buster main"
-ARG APP_PROSODY_RELEASE="0.11.4-1~buster2"
+ARG APP_PROSODY_RELEASE="0.11.5-1~buster6"
 # from Debian backport repository for Cyrus Sasl
 ARG APP_CYRUS_REPO="http://deb.debian.org/debian buster-backports main"
 ARG APP_CYRUS_RELEASE="1.1.0-1~bpo10+1"
