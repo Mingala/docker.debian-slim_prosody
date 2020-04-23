@@ -9,7 +9,7 @@ SHELL ["/bin/bash", "-c"]
 
 # Debian install Sasl and other requirements (Ssl...)
 RUN apt update \
-  && DEBIAN-FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true apt install -y --no-install-recommends \
+  && DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true apt install -y --no-install-recommends \
     openssl \
     ca-certificates \
     sasl2-bin \
@@ -34,7 +34,7 @@ RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 ${APP_PROS
 	&& echo "deb ${APP_PROSODY_REPO}" > /etc/apt/sources.list.d/prosody.list \
 	&& echo "deb ${APP_CYRUS_REPO}" > /etc/apt/sources.list.d/cyrussasl.list \
   && apt update \
-  && DEBIAN-FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true apt install -y --no-install-recommends \
+  && DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true apt install -y --no-install-recommends \
     prosody=${APP_PROSODY_RELEASE} \
     lua-cyrussasl=${APP_CYRUS_RELEASE} \
   && rm -rf /var/lib/apt/lists/*
