@@ -53,10 +53,11 @@ ENV PROSODY_TCP_PORT="5222 5269 5000"
 # data folder for persistency (bind mount folder at Docker run for custom config) /var/lib/prosody/
 # Cyrus sasl config file
 COPY ./usr/lib/sasl2/prosody.conf /usr/lib/sasl2/prosody.conf
+# folder for running pid file
+RUN mkdir -p /var/run/prosody && chown prosody:prosody /var/run/prosody
 
 # entrypoint bash
 COPY ./usr/local/bin/docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 RUN chmod u+x /usr/local/bin/docker_entrypoint.sh
 EXPOSE ${PROSODY_TCP_PORT}/tcp
-#ENTRYPOINT ["/usr/local/bin/docker_entrypoint.sh"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/docker_entrypoint.sh"]
