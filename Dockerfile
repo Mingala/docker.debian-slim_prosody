@@ -1,5 +1,5 @@
 # base version targeted from Docker Hub
-ARG BASE_VERSION="10.3-slim"
+ARG BASE_VERSION="10.7-slim"
 # Debian base
 FROM debian:${BASE_VERSION}
 LABEL maintainer="admin@qi2.info"
@@ -22,10 +22,10 @@ RUN apt update \
 # from Prosody repository
 ARG APP_PROSODY_KEY="0x7393d7e674d9dbb5"
 ARG APP_PROSODY_REPO="http://packages.prosody.im/debian buster main"
-ARG APP_PROSODY_RELEASE="0.11.5-1~buster6"
+ARG APP_PROSODY_RELEASE="0.11.7-*"
 # from Debian backport repository for Cyrus Sasl
 ARG APP_CYRUS_REPO="http://deb.debian.org/debian buster-backports main"
-ARG APP_CYRUS_RELEASE="1.1.0-1~bpo10+1"
+ARG APP_CYRUS_RELEASE="1.1.0-*"
 
 # Debian repository
 #   for Prosody repository as per : https://prosody.im/download/package_repository
@@ -37,6 +37,7 @@ RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 ${APP_PROS
   && DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true apt install -y \
     prosody=${APP_PROSODY_RELEASE} \
     lua-cyrussasl=${APP_CYRUS_RELEASE} \
+    prosody-modules \
   && rm -rf /var/lib/apt/lists/*
 
 # setup Sasl2 environment for LDAP
@@ -47,7 +48,7 @@ RUN usermod -a -G sasl prosody
 
 # setup Prosody environment
 # port (note that config files port definitions make precedence over this, so if different expose manually correct port)
-ENV PROSODY_TCP_PORT="5222 5269 5000"
+ENV PROSODY_TCP_PORT="5222 5269 5000 5281"
 # config file (bind mount file at Docker run for custom config) /etc/prosody/prosody.cfg.lua
 # certificates folder (bind mount folder at Docker run for custom config) /etc/prosody/certs/
 # data folder for persistency (bind mount folder at Docker run for custom config) /var/lib/prosody/
